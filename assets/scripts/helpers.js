@@ -1,7 +1,8 @@
 const modifyElem = (elem, obj) => {
+  const element = document.querySelector(elem);
+
   const existsAttributes = obj.attributes;
   const existsStyles = obj.styles;
-  const element = document.querySelector(elem);
 
   if (existsAttributes) {
     const attributes = Object.entries(obj.attributes);
@@ -33,10 +34,11 @@ const modifyElem = (elem, obj) => {
 };
 
 const createElem = (elem, obj) => {
+  const element = document.createElement(elem);
+
   const existsAttributes = obj.attributes;
   const existsStyles = obj.styles;
   const haveTextContent = obj.text;
-  const element = document.createElement(elem);
 
   if (existsAttributes) {
     const attributes = Object.entries(obj.attributes);
