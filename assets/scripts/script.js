@@ -2,27 +2,53 @@
 
 import { createElem, modifyElem } from "./helpers.js";
 
-// login page
-const $usernameInput = document.getElementById("username-input");
-const $passwordInput = document.getElementById("password-input");
-const $loginBtn = document.querySelector(".login--main-form-button");
+// login container
+const $lgnUserInput = document.getElementById("username-login-input");
+const $lgnPasswordInput = document.getElementById("password-login-input");
+const $loginBtn = document.getElementById("login-button");
 
-$usernameInput.addEventListener("keyup", () => {
-  if($usernameInput.value && $passwordInput.value) {
-    $loginBtn.className = "login--main-form-button active";
+$lgnUserInput.addEventListener("keyup", () => {
+  if($lgnUserInput.value && $lgnPasswordInput.value) {
+    $loginBtn.className = "form-button active";
     $loginBtn.disabled = false;
   } else {
-    $loginBtn.className = "login--main-form-button disabled";
+    $loginBtn.className = "form-button disabled";
     $loginBtn.disabled = true;
   }
-})
+});
 
-$passwordInput.addEventListener("keyup", () => {
-  if($usernameInput.value && $passwordInput.value) {
-    $loginBtn.className = "login--main-form-button active";
+$lgnPasswordInput.addEventListener("keyup", () => {
+  if($lgnUserInput.value && $lgnPasswordInput.value) {
+    $loginBtn.className = "form-button active";
     $loginBtn.disabled = false;
   } else {
-    $loginBtn.className = "login--main-form-button disabled";
+    $loginBtn.className = "form-button disabled";
     $loginBtn.disabled = true;
   }
-})
+});
+
+//register container
+const $rgUsernameInput = document.getElementById("username-register-input");
+const $rgEmailInput = document.getElementById("email-register-input");
+const $registerBtn = document.getElementById("register-button");
+
+$rgUsernameInput.addEventListener("keyup", () => {
+  if($rgUsernameInput.value && $rgEmailInput.value) {
+    $registerBtn.className = "form-button active";
+    $registerBtn.disabled = false;
+  } else {
+    $registerBtn.className = "form-button disabled";
+    $registerBtn.disabled = true;
+  }
+});
+
+$rgEmailInput.addEventListener("keyup", () => {
+  if($rgUsernameInput.value && $rgEmailInput.value) {
+    $registerBtn.className = "form-button active";
+    $registerBtn.disabled = false;
+  } else {
+    $registerBtn.className = "form-button disabled";
+    $registerBtn.disabled = true;
+  }
+});
+
