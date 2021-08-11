@@ -12,7 +12,7 @@
   <title>Twitter</title>
 </head>
 <body>
-  <div class="wrapper full">
+  <div class="wrapper full" style="flex-direction: column;">
     <header class="login--header">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
         <path id="header-logo" d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609
@@ -26,20 +26,20 @@
     </header>
     <main class="login--main">
       <form action="" class="login--main-form">
-        <input type="text" class="form-input" id="username-login-input" placeholder="Phone, email or username" autocomplete="off">
-        <input type="password" class="form-input" id="password-login-input" placeholder="Password">
+        <input type="text" class="form-input" data-input="username-login" placeholder="Phone, email or username" autocomplete="off">
+        <input type="password" class="form-input" data-input="password-login" placeholder="Password">
         <button class="form-button disabled" id="login-button" disabled="true">Log in</button>
       </form>
     </main>
     <footer class="login--footer">
       <a href="#" class="login--footer-link">Forgot Password?</a>
-      <div class="separator">
+      <div class="divisor">
         <span>•</span>
       </div>
       <a href="#" class="login--footer-link">Sign up for Twitter</a>
     </footer>
-    <div class="full absolute-window">
-      <section class="register--section-account" style="display: none;">
+    <div class="full absolute-window" data-js="popUp">
+      <section class="register--section-account">
         <header class="register--header">
           <div class="register--header-logo">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
@@ -56,15 +56,16 @@
         <main class="register--main">
           <form action="" class="register--main-form">
             <div class="register--main-form-input-container">
-              <input type="text" name="" class="form-input" placeholder="Name" id="username-register-input">
-              <input type="email" name="" class="form-input" placeholder="Email" id="email-register-input">
-              <span class="register--main-form-switch">Use phone instead</span>
+              <input type="text" class="form-input" placeholder="Name" data-input="name-register">
+              <input type="email" class="form-input" placeholder="Email" data-input="email-register">
+              <input type="password" name="" class="form-input" placeholder="Password" data-input="password-register">
+              <span class="form-span">Use phone instead</span>
             </div>
-            <button class="form-button disabled" disabled="true" id="register-button">Next</button>
+            <button class="form-button disabled" disabled="true" id="register-button" data-next-step="2">Next</button>
           </form>
         </main>
       </section>
-      <section class="register--section-photo" style="display: none;">
+      <section class="register--section-photo none">
         <header class="register--header">
           <div class="register--header-logo">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
@@ -82,11 +83,11 @@
         <main class="register--main">
           <div class="register--main-profile-photo-container">
             <img class="register--main-profile-photo" src="./assets/images/blank-profile.jpg" alt="" srcset="">
-            <a href="">Skip for now</a>
+            <span class="form-span" data-next-step="3">Skip for now</span>
           </div>
         </main>
       </section>
-      <section class="register--section-bio" style="display: none;">
+      <section class="register--section-bio none">
         <header class="register--header">
           <div class="register--header-logo">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
@@ -104,11 +105,11 @@
         <main class="register--main">
           <form action="" class="register--main-form">
             <input type="text" class="form-input" name="" id="" placeholder="Your bio">
-            <button class="form-button active">Next</button>
+            <button class="form-button active" data-next-step="4" onclick="event.preventDefault();">Next</button>
           </form>
         </main>
       </section>
-      <section class="register--section-username">
+      <section class="register--section-username none">
         <header class="register--header">
           <div class="register--header-logo">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
@@ -126,7 +127,7 @@
         <main class="register--main">
           <form action="" class="register--main-form">
             <input type="text" class="form-input" name="" id="" placeholder="@username">
-            <button class="form-button active">Next</button>
+            <button class="form-button active" data-next-step="5" onclick="event.preventDefault();">Next</button>
           </form>
         </main>
       </section>
