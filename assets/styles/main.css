@@ -13,6 +13,9 @@
   --transparent-color: rgba(91, 112, 131, 0.4);
   --primary-color: #1b95e0;
   --primary-disabled-color: #0e5179;
+  --secondary-color: #202327;
+  --dark-secondary-color: #15181c;
+  --dark-secondary-color-hover: #1a1e22;
 }
 
 h1, h2, h3, span, p, input, a, button {
@@ -265,12 +268,15 @@ a {
   border-right: 1px solid var(--gray-color);
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  margin-right: 2rem;
 }
 
 .home--header-search-container {
   width: 40%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home--main {
@@ -283,11 +289,16 @@ a {
   width: 60%;
   height: 100%;
   border-right: 1px solid var(--gray-color);
+  margin-right: 2rem;
 }
 
 .home--main-trending-container {
   width: 40%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 /* ---- */
@@ -300,6 +311,7 @@ a {
 .home--header-title {
   color: white;
   font-size: 1.5rem;
+  padding: 0 1rem;
 }
 
 .home--menu-nav {
@@ -318,10 +330,168 @@ a {
 }
 
 .home--menu-link {
+  width: intrinsic;
+  width: -moz-max-content;
+  width: -webkit-max-content;
   height: 3rem;
   margin-bottom: 1rem;
-  background-color: red;
   display: flex;
   align-items: center;
   border-radius: 22px;
+  padding: 0 1rem;
+  transition: .3s background-color;
+}
+
+.home--menu-link:hover {
+  cursor: pointer;
+  background-color: var(--dark-secondary-color-hover);
+}
+
+.menu-link-icon-container {
+  width: 1.7rem;
+  margin-right: 15px;
+}
+
+.menu-link-icon {
+  fill: white;
+}
+
+.home--menu-link-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 15px;
+  user-select: none;
+}
+
+.home--header-search-input {
+  width: 100%;
+  height: 3rem;
+  max-height: 3rem;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 32px;
+  padding: 1rem;
+  outline: none;
+  color: white;
+  font-size: .9rem;
+}
+
+.home--header-search-input:focus {
+  border-color: var(--primary-color);
+  background-color: black;
+}
+
+.home--main-trending-nav {
+  width: 100%;
+  height: fit-content;
+  background-color: var(--dark-secondary-color);
+  border-radius: 17px;
+  padding: 1rem 0;
+}
+
+.home--main-trending-nav-header {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding: .5rem 1rem;
+  margin-bottom: 10px;
+}
+
+.home--main-trending-nav-list {
+  width: 100%;
+  list-style-type: none;
+}
+
+.home--main-trending-title {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.home--main-trending-item {
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 15px;
+  padding: .5rem 1rem;
+  transition: .3s background-color;
+}
+
+.home--main-trending-item:hover {
+  cursor: pointer;
+  background-color: var(--dark-secondary-color-hover);
+}
+
+.home--main-trending-item-category-container,
+.home--main-trending-item-tweets-container {
+  width: 100%;
+  height: 20px;
+}
+
+.home--main-trending-item-category,
+.home--main-trending-item-tweets {
+  font-size: .8rem;
+  color: var(--light-gray-color);
+}
+
+.home--main-trending-item-about-container {
+  width: 100%;
+  height: fit-content;
+}
+
+.home--main-trending-item-about {
+  color: white;
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.home--main-trending-container-footer {
+  margin-top: 10px;
+}
+
+.home--main-trending-container-footer-text {
+  color: var(--gray-color);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+
+/* mobile media query */
+@media (max-width: 481px) {
+  .home--header-title-container {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid var(--gray-color);
+    border-right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .home--header-search-container {
+    display: none;
+  }
+
+  .home--main-posts-container {
+    width: 100%;
+    height: 100%;
+    border-right: 0;
+  }
+  
+  .home--main-trending-container {
+    display: none;
+  }
+
+  .home--menu-link {
+    border-radius: 20px;
+    padding: .5rem;
+  }
+
+  .home--menu-link-text {
+    display: none;
+  }
+
+  .menu-link-icon-container {
+    margin-right: 0px;
+  }
 }
