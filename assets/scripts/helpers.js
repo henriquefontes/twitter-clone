@@ -1,3 +1,7 @@
+const selectElem = elem => {
+  return document.querySelector(elem);
+}
+
 const modifyElem = (elem, obj) => {
   const element = document.querySelector(elem);
 
@@ -74,4 +78,13 @@ const createElem = (elem, obj) => {
   return element;
 };
 
-export { modifyElem, createElem }
+const hideElem = (elem, bool) => {
+  if (bool) {
+    return elem.classList.add("none");
+  }
+
+  elem.classList.remove("none");
+
+};
+
+export { selectElem, modifyElem, createElem, hideElem }

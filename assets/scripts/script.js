@@ -1,6 +1,6 @@
 "use strict";
 
-import { createElem, modifyElem } from "./helpers.js";
+import { selectElem, createElem, modifyElem, hideElem } from "./helpers.js";
 
 const registerSections = [
   {
@@ -25,8 +25,8 @@ const setSection = (old, next) => {
   const oldSection = document.querySelector(`.${old}`);
   const nextSection = document.querySelector(`.${next}`);
 
-  oldSection.className = `${old} none`;
-  nextSection.className = next;
+  hideElem(oldSection, true)
+  hideElem(nextSection, false);
 }
 
 const finishRegister = () => {
@@ -39,7 +39,7 @@ const stepButtons = document.querySelectorAll("[data-next-step]")
     const isLastStep = sectionIndex == registerSections.length;
 
     if (isLastStep) {
-      button.addEventListener("click", finishRegister());
+      button.addEventListener("click", finishRegister);
 
       return
     }
@@ -47,68 +47,59 @@ const stepButtons = document.querySelectorAll("[data-next-step]")
     const oldSection = registerSections[sectionIndex - 1].section;
     const nextSection = registerSections[sectionIndex].section;
     
-    button.addEventListener("click", setSection(oldSection, nextSection));
+    button.addEventListener("click", () => setSection(oldSection, nextSection));
   });
 
 //
 
-const $loginBtn = document.getElementById("login-button");
-const $lgnUserInput = document.querySelector("[data-input='username-login']");
-const $lgnPasswordInput = document.querySelector("[data-input='password-login']");
+const $loginBtn = selectElem("#login-button");
+const $lgnUserInput = selectElem("[data-input='username-login']");
+const $lgnPasswordInput = selectElem("[data-input='password-login']");
 
-$lgnUserInput.addEventListener("keyup", () => {
-  const twoInputTyped = $lgnUserInput.value && $lgnPasswordInput.value;
+const loginInputs = [$lgnUserInput, $lgnPasswordInput];
 
-  if (twoInputTyped) {
-    $loginBtn.className = "form-button active";
-    $loginBtn.disabled = false;
-  } else {
-    $loginBtn.className = "form-button disabled";
-    $loginBtn.disabled = true;
-  }
+loginInputs.forEach(input => {
+  input.addEventListener("keyup", () => {
+    const twoInputTyped = $lgnUserInput.value && $lgnPasswordInput.value;
   
-})
-
-$lgnPasswordInput.addEventListener("keyup", () => {
-  const twoInputTyped = $lgnUserInput.value && $lgnPasswordInput.value;
-
-  if(twoInputTyped) {
-    $loginBtn.className = "form-button active";
-    $loginBtn.disabled = false;
-  } else {
-    $loginBtn.className = "form-button disabled";
-    $loginBtn.disabled = true;
-  }
-
+    if (twoInputTyped) {
+      $loginBtn.className = "form-button active";
+      $loginBtn.disabled = false;
+    } else {
+      $loginBtn.className = "form-button disabled";
+      $loginBtn.disabled = true;
+    }
+    
+  })
 });
+
 
 //register container
-const $rgUsernameInput = document.querySelector("[data-input='name-register']");
-const $rgEmailInput = document.querySelector("[data-input='email-register']");
-const $registerBtn = document.getElementById("register-button");
+const $popUp = selectElem("[data-js='popUp']");
+const $signUp = selectElem("[data-js='signup-button'");
 
-$rgUsernameInput.addEventListener("keyup", () => {
-  const twoInputTyped = $rgUsernameInput.value && $rgEmailInput.value;
-
-  if (twoInputTyped) {
-    $registerBtn.className = "form-button active";
-    $registerBtn.disabled = false;
-  } else {
-    $registerBtn.className = "form-button disabled";
-    $registerBtn.disabled = true;
-  }
-
+$signUp.addEventListener("click", () => {
+  hideElem($popUp, false);
 });
 
-$rgEmailInput.addEventListener("keyup", () => {
-  const twoInputTyped = $rgUsernameInput.value && $rgEmailInput.value;
+const $rgNameInput = selectElem("[data-input='name-register']");
+const $rgEmailInput = selectElem("[data-input='email-register']");
+const $rgPasswordInput = selectElem("[data-input='password-register']")
+const $registerBtn = selectElem("#register-button");
 
-  if (twoInputTyped) {
-    $registerBtn.className = "form-button active";
-    $registerBtn.disabled = false;
-  } else {
-    $registerBtn.className = "form-button disabled";
-    $registerBtn.disabled = true;
-  }
+const registerInputs = [$rgNameInput, $rgEmailInput, $rgPasswordInput];
 
+registerInputs.forEach(input => {
+  input.addEventListener("keyup", () => {
+    const allInputTyped = $rgNameInput.value && $rgEmailInput.value && $rgPasswordInput.value;
+
+    if (allInputTyped) {
+      $registerBtn.className = "form-button active";
+      $registerBtn.disabled = false;
+    } else {
+      $registerBtn.className = "form-button disabled";
+      $registerBtn.disabled = true;
+    }
+
+  })
 });
