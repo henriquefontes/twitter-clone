@@ -39,9 +39,7 @@ const stepButtons = document.querySelectorAll("[data-next-step]")
     const isLastStep = sectionIndex == registerSections.length;
 
     if (isLastStep) {
-      button.addEventListener("click", () => {
-        finishRegister();
-      })
+      button.addEventListener("click", finishRegister());
 
       return
     }
@@ -49,9 +47,7 @@ const stepButtons = document.querySelectorAll("[data-next-step]")
     const oldSection = registerSections[sectionIndex - 1].section;
     const nextSection = registerSections[sectionIndex].section;
     
-    button.addEventListener("click", () => {
-      setSection(oldSection, nextSection);
-    })
+    button.addEventListener("click", setSection(oldSection, nextSection));
   });
 
 //
