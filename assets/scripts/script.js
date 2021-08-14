@@ -10,9 +10,6 @@ const registerSections = [
   {
     step: 2,
     section: "register--section-photo",
-    storage: {
-      src: ""
-    }
   },
   {
     step: 3,
@@ -24,25 +21,12 @@ const registerSections = [
   }
 ]
 
-const userStorage = {
-  username: "",
-  name: "",
-  email: "",
-  password: "",
-  picture: "",
-  bio: ""
-}
-
 const setSection = (old, next) => {
   const oldSection = document.querySelector(`.${old}`);
   const nextSection = document.querySelector(`.${next}`);
 
   oldSection.className = `${old} none`;
   nextSection.className = next;
-}
-
-const setStorage = () => {
-
 }
 
 const finishRegister = () => {
