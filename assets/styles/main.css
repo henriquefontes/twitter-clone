@@ -30,7 +30,8 @@ a {
 /*--- utils ---*/
 .full {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 }
 
 .wrapper {
@@ -42,13 +43,14 @@ a {
 .wrapper-home {
   width: 1200px;
   max-width: 1200px;
-  height: 100%;
+  min-height: 100vh;
+  height: auto;
   display: flex;
 }
 
 .wrapper-home-right {
   width: 80%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -258,7 +260,8 @@ a {
 
 .home--menu {
   width: 20%;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   border-right: 1px solid var(--gray-color);
   padding: 1rem;
 }
@@ -296,7 +299,8 @@ a {
 
 .home--main-posts-container {
   width: 60%;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   border-right: 1px solid var(--gray-color);
   margin-right: 2rem;
 }
@@ -496,7 +500,8 @@ a {
 
 .home--main-posts-newpost-text-container {
   width: 100%;
-  height: max-content;
+  height: auto;
+  max-height: 100vh;
   margin-bottom: 1rem;
 }
 
@@ -504,6 +509,7 @@ a {
   width: 100%;
   min-height: 70px;
   height: auto;
+  max-height: 100vh;
   padding-top: .5rem;
   font-size: 1.2rem;
   resize: none;
@@ -584,5 +590,32 @@ a {
 
   .menu-link-icon-container {
     margin-right: 0px;
+  }
+}
+
+@media (max-width: 1281px) {
+  .home--menu-header svg {
+    margin-right: .5rem;
+  }
+  
+  .home--menu {
+    width: 15%;
+  }
+
+  .home--menu-header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .menu-link-icon-container {
+    margin: 0;
+  }
+
+  .home--menu-links {
+    align-items: flex-end;
+  }
+
+  .home--menu-link-text {
+    display: none;
   }
 }
